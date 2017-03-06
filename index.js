@@ -25,6 +25,6 @@ export class MarqueeLabel extends Component {
             <RCTMarqueeLabel  {...nativeProps}/>
         );
     }
-});
+}
 
 let RCTMarqueeLabel = requireNativeComponent('RCTMarqueeLabel', MarqueeLabel);
