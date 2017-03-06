@@ -1,10 +1,10 @@
 'use strict';
 
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import { View, requireNativeComponent } from 'react-native';
 
-export class MarqueeLabel extends Component {
-    propTypes = {
+var MarqueeLabel = React.createClass({
+    propTypes: {
         ...View.propTypes,
         text : PropTypes.string.isRequired,
         scrollDuration : PropTypes.number, //秒
@@ -16,15 +16,15 @@ export class MarqueeLabel extends Component {
         isRepeat : PropTypes.bool, //android
         startPoint : PropTypes.number, //android
         direction : PropTypes.number, //android
-    }
-
-    render() {
-        const { children, ...props } = this.props;
+    },
+    render: function() {
+        const {children, ...props} = this.props;
         const nativeProps = Object.assign({}, props, {text: children});
         return (
             <RCTMarqueeLabel  {...nativeProps}/>
         );
     }
-}
+});
 
-let RCTMarqueeLabel = requireNativeComponent('RCTMarqueeLabel', MarqueeLabel);
+var RCTMarqueeLabel = requireNativeComponent('RCTMarqueeLabel', MarqueeLabel);
+module.exports = MarqueeLabel;
